@@ -1,0 +1,36 @@
+body{
+  background: #80926c6b;
+}
+
+#signupform{
+  margin: 0 auto;
+  width: 50%;
+  text-align: center;
+  margin-top: 100px;
+}
+
+#signupform input[type=text] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+#signupform  input[type=submit] {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.invalid{
+  border: 2px solid red;
+  border-radius: 4px;
+}
+
+.error-msg{
+  color: red;
+}

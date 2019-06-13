@@ -1,0 +1,18 @@
+<div id="signup">
+  <div id="signupform">
+    <form [formGroup]="regForm" (ngSubmit)="onRegistrationSubmit()"  >
+
+      <label>First Name</label>
+      <input formControlName="nickName" [ngClass]="displayFieldCss(regForm, 'nickName', 'signupSubmitAttempt')" type="text">
+      <p *ngIf="isFieldValid(regForm, 'nickName', 'signupSubmitAttempt')" class="error-msg">
+        <span *ngIf="regForm.get('nickName')['errors']['required']">This field is required</span>
+      </p>
+      <label>Last Name</label>
+      <input formControlName="interest" [ngClass]="displayFieldCss(regForm, 'interest', 'signupSubmitAttempt')"  type="text">
+      <p *ngIf="isFieldValid(regForm, 'interest', 'signupSubmitAttempt')" class="error-msg">
+        <span *ngIf="regForm.get('interest')['errors']['required']">This field is required</span>
+      </p>
+      <input type="submit" value="Sign Up">
+    </form>
+  </div>
+</div>
