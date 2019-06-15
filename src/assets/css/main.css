@@ -1,14 +1,22 @@
-body{
+body {
   background: #80926c6b;
 }
 
-#signupform{
+#signupform {
   margin: 0 auto;
-  width: 50%;
+  width: 35%;
   text-align: center;
   margin-top: 100px;
 }
 
+.existUser{
+  text-align: center;
+  width: 100%;
+  display: block;
+  margin-top: 50px;
+  font-size: 15px;
+  color: #b58181;
+}
 #signupform input[type=text] {
   width: 100%;
   padding: 12px 20px;
@@ -16,8 +24,9 @@ body{
   box-sizing: border-box;
 }
 
-#signupform  input[type=submit] {
-  background-color: #4CAF50;
+#signupform input[type=submit] {
+  background-color: #6a816b;
+  border-radius: 10px;
   border: none;
   color: white;
   padding: 16px 32px;
@@ -26,11 +35,422 @@ body{
   cursor: pointer;
 }
 
-.invalid{
+.invalid {
   border: 2px solid red;
   border-radius: 4px;
 }
 
-.error-msg{
+.error-msg {
   color: red;
+}
+
+.float_left {
+  float: left;
+}
+
+body{
+  font-family: 'Raleway', sans-serif;
+  background-color: #606060;
+  margin: 20px 0px;
+}
+.main-section small{
+  font-size: 12px;
+}
+.main-section h3, .main-section h5{
+  margin: 0px;
+}
+.main-section{
+  width: 230px;
+  border-radius: 10px 10px 0 0;
+  background-color: #fff;
+  float: right;
+  margin-right: 20px;
+}
+.signUpLabel{
+  font-size: 15px;
+  color: white;
+}
+.head-section{
+  border-bottom:1px solid #E6E6E6;
+  clear: both;
+  overflow: hidden;
+  width: 100%;
+}
+.headLeft-section{
+  width: 100%;
+  float: left;
+  border-right:1px solid #E6E6E6;
+}
+.headLeft-sub{
+  padding: 15px;
+  text-align: center;
+}
+.headLeft-sub input{
+  width: 60%;
+  border-radius: 0px;
+  border:1px solid #E6E6E6;
+  padding: 7px;
+}
+.headLeft-sub button{
+  background: #009EF7;
+  color: #fff;
+  border:1px solid #E6E6E6;
+  padding: 7px 15px;
+}
+.headRight-section{
+  width: 50%;
+  float: left;
+  position: relative;
+  margin-left: 50px;
+  background: #f6f6f6;
+  border-bottom: 1px solid;
+  border-radius: 10px 10px 0 0;
+}
+.headRight-sub{
+  padding: 10px 15px 0px 15px;
+}
+
+.body-section{
+  clear: both;
+  overflow: hidden;
+  width: 100%;
+  height: 570px;
+}
+
+.typeing{
+  width: 66px;
+  /* float: right; */
+  left: 8px;
+  bottom: 21px;
+  position: absolute;
+  /* padding: 5px; */
+}
+
+.left-section{
+  width: 95%;
+  float: left;
+  height: 500px;
+  border-right:1px solid #E6E6E6;
+  background-color: #FFF;
+  z-index: 1;
+  position: relative;
+}
+.left-section ul{
+  padding: 0px;
+  margin: 0px;
+  list-style: none;
+}
+.left-section ul li{
+  padding: 15px 0px;
+  box-shadow: 0px 2px 11px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+#signupform form{
+  padding: 20px;
+  box-shadow: 0px 0px 35px;
+  border-radius: 10px;
+}
+.left-section .chatList .desc span {
+  height: 10px;
+  width: 10px;
+  background: #bc2222;
+  display: inline-block;
+  border-radius: 50%;
+  float: left;
+  margin-right: 10px;
+  margin-top: 10px;
+}
+
+.grean {
+  height: 10px;
+  width: 10px;
+  background: #009EF7;
+  display: block;
+  border-radius: 50%;
+}
+
+.float_right_color{
+  height: 20px;
+  width: 20px;
+  display: block;
+  float: right;
+  border-radius: 50%;
+  box-shadow: 0px 0px 13px;
+}
+
+.float_right_color_red {
+  background: #bc2222;
+}
+
+.float_right_color_grean{
+  background: #398107;
+}
+.left-section .chatList .online span {
+  background: green;
+}
+.left-section ul li.active{
+  background: #009EF7;
+  color: #fff;
+  position: relative;
+}
+.mCustomScrollBox, .mCSB_container{
+  overflow: unset !important;
+}
+.left-section ul li.active .desc .time{
+  color: #fff;
+}
+.left-section ul li.active:before{
+  position: absolute;
+  content: '';
+  right: -10px;
+  border:5px solid #009EF7;
+  top: 0px;
+  bottom: 0px;
+  border-radius: 0px 3px 3px 0px;
+}
+.left-section ul li.active:after{
+  position: absolute;
+  content: "";
+  bottom: 0px;
+  right: 0px;
+  left: auto;
+  width: 100%;
+  top: 0px;
+  -webkit-box-shadow: -8px 4px 10px #a1a1a1;
+  -moz-box-shadow: -8px 4px 10px #a1a1a1;
+  box-shadow: -8px 4px 10px #a1a1a1;
+}
+
+.left-section .chatList{
+  overflow: hidden;
+}
+.left-section .chatList .img{
+  width: 60px;
+  float: left;
+  text-align: center;
+  position: relative;
+}
+.left-section .chatList .img img{
+  width: 30px;
+  border-radius: 50%;
+}
+.left-section .chatList .img i{
+  position: absolute;
+  font-size: 10px;
+  color: #52E2A7;
+  border:1px solid #fff;
+  border-radius: 50%;
+  left: 10px;
+}
+.left-section .chatList .desc{
+  width: calc(100% - 60px);
+  float: left;
+  position: relative;
+  padding-left: 15px;
+}
+.left-section .chatList .desc h5{
+  margin-top: 6px;
+  line-height: 5px;
+}
+.left-section .chatList .desc .time{
+  position: absolute;
+  right: 15px;
+  color: #c1c1c1;
+}
+.emojB{
+  padding-top: 10px;
+}
+.pointer{
+  cursor: pointer;
+}
+
+.emoj{
+  position: absolute;
+  z-index: 200;
+  bottom: 40px;
+  left: 100px;
+}
+.right-section{
+  width: 50%;
+  margin-left: 50px;
+  float: left;
+  height: 400px;
+  overflow: hidden;
+  background-color: #F6F6F6;
+  position: relative;
+}
+.chat-section{
+  width: 50%;
+  margin-left: 50px;
+  float: left;
+  background-color: #F6F6F6;
+  position: relative;
+}
+.message{
+  height: calc(100% - 68px);
+  font-family: sans-serif;
+}
+.message ul{
+  padding: 0px;
+  list-style: none;
+  margin: 0px auto;
+  width: 90%;
+  overflow:hidden;
+}
+.message ul li{
+  position: relative;
+  width: 80%;
+  padding: 15px 0px;
+  clear: both;
+}
+.message ul li.msg-left{
+  float: left;
+}
+.message ul li.msg-left img{
+  position: absolute;
+  width: 40px;
+  bottom: 30px;
+}
+.message ul li.msg-left .msg-desc{
+  margin-left: 70px;
+  font-size: 12px;
+  background: #E8E8E8;
+  padding:5px 10px;
+  border-radius: 5px 5px 5px 0px;
+  position: relative;
+}
+.message ul li.msg-left .msg-desc:before{
+  position: absolute;
+  content: '';
+  border:10px solid transparent;
+  border-bottom-color: #E8E8E8;
+  bottom: 0px;
+  left: -10px;
+}
+.message ul li.msg-left small{
+  float: right;
+  color: #c1c1c1;
+}
+
+.message ul li.msg-right{
+  float: right;
+}
+.message ul li.msg-right img{
+  position: absolute;
+  width: 40px;
+  right: 0px;
+  bottom: 30px;
+}
+.message ul li.msg-right .msg-desc{
+  margin-right: 70px;
+  font-size: 12px;
+  background: #cce5ff;
+  color: black;
+  padding:5px 10px;
+  border-radius: 5px 5px 5px 0px;
+  position: relative;
+}
+.message ul li.msg-right .msg-desc:before{
+  position: absolute;
+  content: '';
+  border:10px solid transparent;
+  border-bottom-color: #cce5ff;
+  bottom: 0px;
+  right: -10px;
+}
+.message ul li.msg-right small{
+  float: right;
+  color: #c1c1c1;
+  margin-right: 70px;
+}
+.message ul li.msg-day{
+  border-top:1px solid #EBEBEB;
+  width: 100%;
+  padding: 0px;
+  margin: 15px 0px;
+}
+.message ul li.msg-day small{
+  position: absolute;
+  top: -10px;
+  background: #F6F6F6;
+  color: #c1c1c1;
+  padding: 3px 10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.right-section-bottom{
+  background: #fff;
+  width: 100%;
+  padding: 15px 0px 15px 0px;
+  position: absolute;
+  bottom: -68px;
+  border-top: 1px solid #E6E6E6;
+  text-align: center;
+}
+.right-section-bottom input{
+  border:0px;
+  padding:8px 4px 10px 17px;
+  margin-left: 45px;
+  width:calc(100% - 150px);
+
+}
+
+.file_block{
+  background: #e8e8e8;
+  padding: 10px;
+  position: relative;
+  margin-bottom: 26px;
+  display: block;
+  border-radius: 10px;
+  margin: 0 auto;
+  width: 40%;
+}
+.file_block i{
+  position: absolute;
+  height: 18px;
+  cursor: pointer;
+  width: 18px;
+  top: 0;
+  right: 0;
+}
+.right-section-bottom .btn-send{
+  border:0px;
+  padding: 8px 10px;
+  float: right;
+  margin-right: 30px;
+  color: #009EF7;
+  font-size: 18px;
+  background: #fff;
+  cursor: pointer;
+}
+.upload-btn{
+  overflow: hidden;
+  display: inline-block;
+  float: left;
+  position: absolute;
+  left: 0px;
+  bottom: 5px;
+}
+.upload-btn .btn{
+  border:0px;
+  padding: 8px 10px;
+  color: #009EF7;
+  font-size: 18px;
+  background: #fff;
+  cursor: pointer;
+}
+.upload-btn input[type=file] {
+  font-size: 100px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
+.watch{
+  padding-left: 300px;
+  padding-top: 50px;
+  font-size: 50px;
+  color: white;
 }

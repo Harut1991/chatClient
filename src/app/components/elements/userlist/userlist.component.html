@@ -1,0 +1,11 @@
+<div class="body-section">
+  <div class="left-section" malihu-scrollbar [scrollbarOptions]="scrollbarOptions">
+    <ul *ngIf="users && users.length">
+      <ng-container *ngFor="let user of users | orderBy: 'active'  ">
+        <app-chat-users (activateUserEmit)="activateUser($event)" [activeUser]="activeUser"
+                        [user]="user"></app-chat-users>
+      </ng-container>
+    </ul>
+    <span class="existUser" *ngIf="!users || !users.length"> Please wait another user to log in</span>
+  </div>
+</div>

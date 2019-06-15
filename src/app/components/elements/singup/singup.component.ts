@@ -2,8 +2,13 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormValidation} from '../../../utils/forms';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Subscription} from 'rxjs/index';
-import { FormControl } from '@angular/forms';
+import {FormControl} from '@angular/forms';
 import {ToastrService} from 'ngx-toastr';
+import {UserService} from '../../../services/user.service';
+import {User} from '../../../models/user';
+import {HttpErrorResponse} from '@angular/common/http';
+import {userSetter} from '../../../utils/helpers';
+import {SocketService} from '../../../services/socket.service';
 
 @Component({
   selector: 'app-singup',
@@ -11,12 +16,14 @@ import {ToastrService} from 'ngx-toastr';
   styleUrls: ['./singup.component.css']
 })
 export class SingupComponent extends FormValidation implements OnInit, OnDestroy {
-  public regForm: FormGroup;
   private regSub: Subscription;
   public signupSubmitAttempt = false;
+  public regForm: FormGroup;
 
   constructor(
     private formBuilder: FormBuilder,
+    private userService: UserService,
+    private socketService: SocketService,
     private toastrService: ToastrService,
   ) {
     super();
@@ -36,11 +43,21 @@ export class SingupComponent extends FormValidation implements OnInit, OnDestroy
   }
 
   onRegistrationSubmit(): void {
+
     this.signupSubmitAttempt = true;
     if (this.regForm.valid) {
       const formData = this.regForm.value;
-      console.log(formData);
-      //this.toastrService.error(error.error['non_field_errors'][0]);
+      this.regSub = this.userService.create(formData).subscribe(
+        (res: User) => {
+          this.userService.userSubject.next(res);
+          userSetter(res);
+          res.active = true;
+          this.socketService.setOnlineFlag(res.id);
+          this.socketService.setNewUser(res);
+        },
+        (err: HttpErrorResponse) => {
+          this.toastrService.error(err.error.message);
+        });
     }
   }
 

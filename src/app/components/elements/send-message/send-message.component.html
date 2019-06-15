@@ -1,0 +1,21 @@
+<div style="position: relative;">
+  <form [formGroup]="form" (ngSubmit)="sendMessage()">
+    <div class="upload-btn">
+      <span class="btn" onclick="document.getElementById('myfile').click()"><i class="fa fa-upload"></i></span>
+      <input type="file" id="myfile" name="myfile" (change)="onFileChange($event)"/>
+    </div>
+    <span class="file_block" *ngIf="file"><i (click)="deleteFile()" class="fa fa-times"></i>{{file.name}}</span>
+    <input type="text" formControlName="mess" (keydown)="onKeyDown()" name="" placeholder="type here...">
+
+    <span><i class="fa fa-smile-o emojB pointer" (click)="showEmoj()"></i></span>
+    <button class="btn-send"><i class="fa fa-send"></i></button>
+  </form>
+
+  <div class="emoj" *ngIf="emoj">
+    <ngx-emoj
+      (onemojipick)="handleEmoji($event)"
+      [width]="'35vw'"
+      [height]="'50vh'">
+    </ngx-emoj>
+  </div>
+</div>

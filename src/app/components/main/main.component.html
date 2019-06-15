@@ -1,1 +1,2 @@
-<app-singup></app-singup>
+<app-singup *ngIf="!user"></app-singup>
+<app-profile *ngIf="user" [user]="user"></app-profile>

@@ -1,3 +1,14 @@
-<p>
-  profile works!
-</p>
+<div class="main-section">
+  <div class="head-section">
+    <div class="headLeft-section">
+      <div class="headLeft-sub">
+        <p>{{user.nickName}}</p>
+      </div>
+    </div>
+  </div>
+  <app-userlist [users]="users" (activeUserChange)='activeUserChange($event)'></app-userlist>
+</div>
+<div>
+  <app-active-user-header [activeUser]="activeUser" *ngIf="activeUser"></app-active-user-header>
+  <app-userchat [user]="user" [activeUser]="activeUser"></app-userchat>
+</div>

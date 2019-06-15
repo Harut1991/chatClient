@@ -1,0 +1,10 @@
+<li class="" [ngClass]="message.userId === user.id ? 'msg-left' : 'msg-right'">
+  <div class="msg-left-sub">
+    <div class="msg-desc">
+      <div *ngIf="message.fileName"><a [href]="filePath" target="_blank">{{message.fileName.split("*-*")[1]}}</a><br>
+      </div>
+      {{message.message}}
+    </div>
+    <small>{{message.created | date:'medium'}}</small>
+  </div>
+</li>

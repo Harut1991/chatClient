@@ -1,0 +1,9 @@
+<li (click)="activateUser(user)" [class.active]="activeUser && activeUser.id === user.id">
+  <div class="chatList">
+    <div class="desc" [ngClass]="user['active'] ? 'online': ''">
+      <span></span>
+      <h5>{{user.nickName}}</h5>
+      <small>{{user.interest}}</small>
+    </div>
+  </div>
+</li>
