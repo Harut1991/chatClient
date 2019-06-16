@@ -7,6 +7,7 @@ import {Subscription} from 'rxjs';
 import {SocketService} from '../../../services/socket.service';
 import {Message} from '../../../models/message';
 import {MalihuScrollbarService} from 'ngx-malihu-scrollbar';
+import {userGetter} from '../../../utils/helpers';
 
 @Component({
   selector: 'app-userchat',
@@ -16,12 +17,16 @@ import {MalihuScrollbarService} from 'ngx-malihu-scrollbar';
 export class UserchatComponent implements OnInit, OnChanges, OnDestroy {
   @Input() activeUser: User;
   @Input() user: User;
+  @Input() users: User[];
   @Output() typingEmit = new EventEmitter();
   public room: Room;
   private getS: Subscription;
   private typing: boolean;
+  private audio = new Audio('assets/audio/to-the-point.mp3');
   private createS: Subscription;
   private getNewM: Subscription;
+  private getNewMByUser: Subscription;
+  private getNewUser: Subscription;
   private listener: Subscription;
 
   constructor(
@@ -44,6 +49,7 @@ export class UserchatComponent implements OnInit, OnChanges, OnDestroy {
   setRoomChat($event): void {
     this.room.messages.push($event);
     this.socketService.setNewMessage(this.room.id, $event);
+    this.socketService.setNewMessageByUsersId($event.userId, this.activeUser.id);
     this.mScrollbarService.destroy('#scrollElem');
     this.mScrollbarService.initScrollbar('#scrollElem',
       {axis: 'y', theme: 'minimal-dark', setTop: '-999999px'});
@@ -69,6 +75,7 @@ export class UserchatComponent implements OnInit, OnChanges, OnDestroy {
     if (this.listener) {
       this.listener.unsubscribe();
     }
+    this.users.find((r) => r.id === this.activeUser.id).count = 0;
     this.listener = this.socketService.typingListen().subscribe(
       (result: any) => {
         if (result.roomId === this.room.id) {
@@ -93,7 +100,7 @@ export class UserchatComponent implements OnInit, OnChanges, OnDestroy {
   ngOnInit() {
     this.getNewM = this.socketService.getNewMessage().subscribe(
       (res: { roomId: number, message: Message }) => {
-        if (res.roomId === this.room.id) {
+        if (this.room && res.roomId === this.room.id) {
           this.room.messages.push(res.message);
           this.mScrollbarService.destroy('#scrollElem');
           this.mScrollbarService.initScrollbar('#scrollElem',
@@ -101,6 +108,27 @@ export class UserchatComponent implements OnInit, OnChanges, OnDestroy {
         }
       }
     );
+    this.getNewMByUser = this.socketService.getNewMessageByUsersId().subscribe(
+      (result: {userFrom: number, userTo: number}) => {
+        if (result.userTo === this.user.id) {
+          if (!this.activeUser || this.activeUser.id !== result.userFrom) {
+            const currentUser = this.users.find((r) => r.id === result.userFrom);
+            if (!currentUser.count) {
+              currentUser.count = 0;
+            }
+            this.audio.pause()
+            this.audio.play();
+            currentUser.count = currentUser.count + 1;
+          }
+        }
+      }
+    );
+    this.getNewUser = this.socketService.getNewUser().subscribe((res: User) => {
+      if (res.id === userGetter().id) {
+        return false;
+      }
+      this.users.push(res);
+    });
   }
 
   ngOnDestroy(): void {
@@ -113,8 +141,14 @@ export class UserchatComponent implements OnInit, OnChanges, OnDestroy {
     if (this.getNewM) {
       this.getNewM.unsubscribe();
     }
+    if (this.getNewMByUser) {
+      this.getNewMByUser.unsubscribe();
+    }
     if (this.createS) {
       this.createS.unsubscribe();
+    }
+    if (this.getNewUser) {
+      this.getNewUser.unsubscribe();
     }
   }
 }

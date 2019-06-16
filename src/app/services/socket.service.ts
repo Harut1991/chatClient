@@ -30,11 +30,18 @@ export class SocketService {
   }
 
   setNewMessage(id: number, newMessage: Message) {
-    this.socket.emit('new_message', {roomId: id, message: newMessage});
+    this.socket.emit('newMessage', {roomId: id, message: newMessage});
   }
 
   setNewUser(user: User) {
     this.socket.emit('newuser', user);
+  }
+
+  setNewMessageByUsersId(userFrom: number, userTo: number) {
+    this.socket.emit('newMessageByUsersId', {
+      'userFrom': userFrom,
+      'userTo': userTo
+    });
   }
 
   typingListen() {
@@ -44,11 +51,16 @@ export class SocketService {
 
   getNewMessage() {
     return this.socket
-      .fromEvent('new_message');
+      .fromEvent('newMessage');
   }
 
   getNewUser() {
     return this.socket
       .fromEvent('newuser');
+  }
+
+  getNewMessageByUsersId() {
+    return this.socket
+      .fromEvent('newMessageByUsersId');
   }
 }

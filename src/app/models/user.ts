@@ -3,4 +3,5 @@ export interface User {
   nickName: string;
   interest: string;
   active?: boolean;
+  count?: number;
 }
