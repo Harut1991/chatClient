@@ -29,4 +29,8 @@ export class UserService extends BaseRestService {
   get(id: number): Observable<User> {
     return this.getByType<User>(`${this.URL}/${id}`);
   }
+
+  getIp(): Observable<{ip: string}> {
+    return this.http.get<{ip: string}>(`https://jsonip.com`);
+  }
 }

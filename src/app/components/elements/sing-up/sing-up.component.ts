@@ -17,9 +17,10 @@ import {SocketService} from '../../../services/socket.service';
 })
 export class SingUpComponent extends FormValidation implements OnInit, OnDestroy {
   private regSub: Subscription;
+  private getIp: Subscription;
   public signupSubmitAttempt = false;
   public regForm: FormGroup;
-
+  public ip: string;
   constructor(
     private formBuilder: FormBuilder,
     private userService: UserService,
@@ -27,9 +28,13 @@ export class SingUpComponent extends FormValidation implements OnInit, OnDestroy
     private toastrService: ToastrService,
   ) {
     super();
+    this.ip = null;
   }
 
   ngOnInit() {
+    this.getIp = this.userService.getIp().subscribe((res: {ip: string}) => {
+      this.ip = res.ip;
+    });
     this.regForm = this.formBuilder.group({
       nickName: new FormControl(null, [Validators.required]),
       interest: new FormControl(null, [Validators.required]),
@@ -40,6 +45,9 @@ export class SingUpComponent extends FormValidation implements OnInit, OnDestroy
     if (this.regSub) {
       this.regSub.unsubscribe();
     }
+    if (this.getIp) {
+      this.getIp.unsubscribe();
+    }
   }
 
   onRegistrationSubmit(): void {
@@ -47,6 +55,7 @@ export class SingUpComponent extends FormValidation implements OnInit, OnDestroy
     this.signupSubmitAttempt = true;
     if (this.regForm.valid) {
       const formData = this.regForm.value;
+      formData.ip = this.ip;
       this.regSub = this.userService.create(formData).subscribe(
         (res: User) => {
           this.userService.userSubject.next(res);

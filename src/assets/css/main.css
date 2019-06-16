@@ -372,7 +372,7 @@ body{
 }
 .message ul li.msg-right img{
   position: absolute;
-  width: 40px;
+  width: 90px;
   right: 0px;
   bottom: 30px;
 }
