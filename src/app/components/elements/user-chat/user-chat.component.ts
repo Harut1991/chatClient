@@ -109,14 +109,14 @@ export class UserChatComponent implements OnInit, OnChanges, OnDestroy {
       }
     );
     this.getNewMByUser = this.socketService.getNewMessageByUsersId().subscribe(
-      (result: {userFrom: number, userTo: number}) => {
+      (result: { userFrom: number, userTo: number }) => {
         if (result.userTo === this.user.id) {
           if (!this.activeUser || this.activeUser.id !== result.userFrom) {
             const currentUser = this.users.find((r) => r.id === result.userFrom);
             if (!currentUser.count) {
               currentUser.count = 0;
             }
-            this.audio.pause()
+            this.audio.pause();
             this.audio.play();
             currentUser.count = currentUser.count + 1;
           }

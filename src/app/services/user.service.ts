@@ -30,7 +30,7 @@ export class UserService extends BaseRestService {
     return this.getByType<User>(`${this.URL}/${id}`);
   }
 
-  getIp(): Observable<{ip: string}> {
-    return this.http.get<{ip: string}>(`https://jsonip.com`);
+  getIp(): Observable<{ ip: string }> {
+    return this.http.get<{ ip: string }>(`https://jsonip.com`);
   }
 }

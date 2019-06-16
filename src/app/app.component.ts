@@ -13,6 +13,7 @@ import {ToastrService} from 'ngx-toastr';
 })
 export class AppComponent {
   public loader = true;
+
   constructor(
     private userService: UserService,
     private toastrService: ToastrService,

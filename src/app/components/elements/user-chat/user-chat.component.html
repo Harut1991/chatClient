@@ -11,10 +11,11 @@
   <div class="chat-section">
     <div class="right-section-bottom">
       <img *ngIf="typing" class="typeing" src="assets/images/lg.messenger-typing-preloader.gif">
-      <app-send-message [user]="user"  [roomId]="room.id" (keydownEm)="onKeyDown()" (setRoom)="setRoomChat($event)"></app-send-message>
+      <app-send-message [user]="user" [roomId]="room.id" (keydownEm)="onKeyDown()"
+                        (setRoom)="setRoomChat($event)"></app-send-message>
     </div>
   </div>
 </ng-container>
 <ng-container *ngIf="!room && !activeUser">
-  <p class="chooseRom" >Please choose chat room</p>
+  <p class="chooseRom">Please choose chat room</p>
 </ng-container>

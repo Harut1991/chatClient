@@ -1,5 +1,5 @@
 <li
-    [ngClass]="{
+  [ngClass]="{
     'msg-left':message.userId === user.id ,
     'msg-right': message.userId !== user.id,
     'msg-file': fileType
@@ -14,14 +14,14 @@
           <a [attr.href]="downloadPath" target="_blank"><img [src]="showPath"></a>
         </ng-container>
         <ng-container *ngIf="fileType === 2">
-            <video controls>
-              <source [attr.src]="showPath" >
-            </video>
+          <video controls>
+            <source [attr.src]="showPath">
+          </video>
         </ng-container>
         <ng-container *ngIf="fileType === 3">
-            <audio controls>
-              <source [attr.src]="showPath">
-            </audio>
+          <audio controls>
+            <source [attr.src]="showPath">
+          </audio>
         </ng-container>
         <br>
       </div>

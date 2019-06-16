@@ -22,6 +22,7 @@ export class SingUpComponent extends FormValidation implements OnInit, OnDestroy
   public signupSubmitAttempt = false;
   public regForm: FormGroup;
   public ip: string;
+
   constructor(
     private formBuilder: FormBuilder,
     private userService: UserService,
@@ -33,7 +34,7 @@ export class SingUpComponent extends FormValidation implements OnInit, OnDestroy
   }
 
   ngOnInit() {
-    this.getIp = this.userService.getIp().subscribe((res: {ip: string}) => {
+    this.getIp = this.userService.getIp().subscribe((res: { ip: string }) => {
       this.ip = res.ip;
     });
     this.regForm = this.formBuilder.group({
