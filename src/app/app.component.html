@@ -1,1 +1,2 @@
-<router-outlet></router-outlet>
+<router-outlet *ngIf="!loader"></router-outlet>
+<p *ngIf="loader">loading....</p>

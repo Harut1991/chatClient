@@ -44,7 +44,7 @@ const config: SocketIoConfig = { url: environment.apiurl, options: {} };
     NgxEmojModule,
     MalihuScrollbarModule.forRoot(),
     SocketIoModule.forRoot(config),
-    ToastrModule.forRoot({timeOut: 2000}),
+    ToastrModule.forRoot({timeOut: 5000}),
     ReactiveFormsModule,
     BrowserAnimationsModule,
     AppRoutingModule

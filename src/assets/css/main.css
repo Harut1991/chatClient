@@ -56,15 +56,17 @@ body{
 .main-section small{
   font-size: 12px;
 }
+.msg-file .msg-desc{
+  padding: 36px 9px 0 9px !important;
+}
 .main-section h3, .main-section h5{
   margin: 0px;
 }
 .main-section{
-  width: 230px;
-  border-radius: 10px 10px 0 0;
+  width: 30%;
   background-color: #fff;
   float: right;
-  margin-right: 20px;
+  margin-top: -20px;
 }
 .signUpLabel{
   font-size: 15px;
@@ -98,7 +100,7 @@ body{
   padding: 7px 15px;
 }
 .headRight-section{
-  width: 50%;
+  width: 75%;
   float: left;
   position: relative;
   margin-left: 50px;
@@ -163,7 +165,7 @@ body{
   list-style: none;
 }
 .left-section ul li{
-  padding: 15px 0px;
+  padding: 7px 0px;
   box-shadow: 0px 2px 11px;
   cursor: pointer;
   margin-top: 10px;
@@ -295,7 +297,7 @@ body{
   left: 100px;
 }
 .right-section{
-  width: 50%;
+  width: 75%;
   margin-left: 50px;
   float: left;
   height: 400px;
@@ -304,7 +306,7 @@ body{
   position: relative;
 }
 .chat-section{
-  width: 50%;
+  width: 75%;
   margin-left: 50px;
   float: left;
   background-color: #F6F6F6;
@@ -323,17 +325,26 @@ body{
 }
 .message ul li{
   position: relative;
-  width: 80%;
+  width: 75%;
   padding: 15px 0px;
   clear: both;
 }
 .message ul li.msg-left{
   float: left;
 }
+.chooseRom{
+  font-size: 20px;
+  color: white;
+  text-align: center;
+}
+.msg-desc video, .msg-desc audio {
+  width: 100%;
+}
 .message ul li.msg-left img{
   position: absolute;
-  width: 40px;
-  bottom: 30px;
+  width: 90px;
+  bottom: 29px;
+  right: 8px;
 }
 .message ul li.msg-left .msg-desc{
   margin-left: 70px;

@@ -25,4 +25,8 @@ export class UserService extends BaseRestService {
   getAll(): Observable<User[]> {
     return this.getByType<User[]>(`${this.URL}`);
   }
+
+  get(id: number): Observable<User> {
+    return this.getByType<User>(`${this.URL}/${id}`);
+  }
 }

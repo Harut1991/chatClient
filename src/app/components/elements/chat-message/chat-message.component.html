@@ -1,9 +1,31 @@
-<li class="" [ngClass]="message.userId === user.id ? 'msg-left' : 'msg-right'">
+<li
+    [ngClass]="{
+    'msg-left':message.userId === user.id ,
+    'msg-right': message.userId !== user.id,
+    'msg-file': fileType
+    }">
   <div class="msg-left-sub">
     <div class="msg-desc">
-      <div *ngIf="message.fileName"><a [href]="filePath" target="_blank">{{message.fileName.split("*-*")[1]}}</a><br>
+      <div *ngIf="message.fileName">
+        <ng-container *ngIf="!fileType">
+          <a [attr.href]="downloadPath" target="_blank">{{message.fileName.split("*-*")[1]}}</a>
+        </ng-container>
+        <ng-container *ngIf="fileType === 1">
+          <a [attr.href]="downloadPath" target="_blank"><img [src]="showPath"></a>
+        </ng-container>
+        <ng-container *ngIf="fileType === 2">
+            <video controls>
+              <source [attr.src]="showPath" >
+            </video>
+        </ng-container>
+        <ng-container *ngIf="fileType === 3">
+            <audio controls>
+              <source [attr.src]="showPath">
+            </audio>
+        </ng-container>
+        <br>
       </div>
-      {{message.message}}
+      <p style="width: 40%;display:inline-block;">{{message.message}}</p>
     </div>
     <small>{{message.created | date:'medium'}}</small>
   </div>

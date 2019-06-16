@@ -8,7 +8,7 @@
   </div>
   <app-userlist [users]="users" (activeUserChange)='activeUserChange($event)'></app-userlist>
 </div>
-<div>
+<div style="width: 75%">
   <app-active-user-header [activeUser]="activeUser" *ngIf="activeUser"></app-active-user-header>
   <app-userchat [user]="user" [users]="users" [activeUser]="activeUser"></app-userchat>
 </div>

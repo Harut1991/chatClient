@@ -15,3 +15,6 @@
     </div>
   </div>
 </ng-container>
+<ng-container *ngIf="!activeUser || !room">
+  <p class="chooseRom" >Please choose chat room</p>
+</ng-container>
