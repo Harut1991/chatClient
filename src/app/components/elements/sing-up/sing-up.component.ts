@@ -62,8 +62,7 @@ export class SingUpComponent extends FormValidation implements OnInit, OnDestroy
     this.regSub = this.userService.create(formData).subscribe(
       // @ts-ignore
       (res: ResponseForCreate) => {
-        console.log(res)
-        this.userService.userSubject.next(res);
+        this.userService.userSubject.next(res.user);
         userSetter(res.user);
         this.socketService.setOnlineFlag(res.user.id);
         if (!res.exist) {
