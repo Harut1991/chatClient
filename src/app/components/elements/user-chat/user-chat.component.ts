@@ -11,10 +11,10 @@ import {userGetter} from '../../../utils/helpers';
 
 @Component({
   selector: 'app-userchat',
-  templateUrl: './userchat.component.html',
-  styleUrls: ['./userchat.component.css']
+  templateUrl: './user-chat.component.html',
+  styleUrls: ['./user-chat.component.css']
 })
-export class UserchatComponent implements OnInit, OnChanges, OnDestroy {
+export class UserChatComponent implements OnInit, OnChanges, OnDestroy {
   @Input() activeUser: User;
   @Input() user: User;
   @Input() users: User[];

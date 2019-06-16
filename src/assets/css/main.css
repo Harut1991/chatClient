@@ -116,6 +116,17 @@ body{
   width: 100%;
   height: 570px;
 }
+.opacity{
+  opacity: 0.4;
+  pointer-events:none;
+}
+.loader{
+  position: absolute;
+  height: 50px;
+  width: 50px;
+  bottom: -5px;
+  left: 43%;
+}
 .counter{
   position: absolute;
   top: -9px;

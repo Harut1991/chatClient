@@ -21,6 +21,7 @@ export class SendMessageComponent implements OnInit, OnDestroy {
   private createSubscription: Subscription;
   public form: FormGroup;
   public emoj: boolean;
+  public send: boolean;
   public file: File;
 
   constructor(
@@ -51,6 +52,7 @@ export class SendMessageComponent implements OnInit, OnDestroy {
   }
 
   sendMessage(): void {
+    this.send = true;
     if (this.form.valid) {
       const formData = this.form.value;
       formData.userId = this.user.id;
@@ -63,16 +65,19 @@ export class SendMessageComponent implements OnInit, OnDestroy {
           this.form.reset();
           this.emoj = false;
           this.file = null;
+          this.send = false;
         },
         (err: HttpErrorResponse) => {
           this.toastrService.error(err.error.message);
           if (!environment.production) {
             this.toastrService.error('Are you sure that you created data base with utf8?(use Readme)');
           }
+          this.send = false;
         }
       );
     } else {
       this.toastrService.error('type anything');
+      this.send = false;
     }
   }
 

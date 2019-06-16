@@ -6,10 +6,10 @@ import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-userlist',
-  templateUrl: './userlist.component.html',
-  styleUrls: ['./userlist.component.css']
+  templateUrl: './user-list.component.html',
+  styleUrls: ['./user-list.component.css']
 })
-export class UserlistComponent implements OnInit, OnChanges, OnDestroy {
+export class UserListComponent implements OnInit, OnChanges, OnDestroy {
   @Input() users: User[];
   @Output() activeUserChange = new EventEmitter();
   public activeUser: User;

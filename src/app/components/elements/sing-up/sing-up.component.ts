@@ -12,10 +12,10 @@ import {SocketService} from '../../../services/socket.service';
 
 @Component({
   selector: 'app-singup',
-  templateUrl: './singup.component.html',
-  styleUrls: ['./singup.component.css']
+  templateUrl: './sing-up.component.html',
+  styleUrls: ['./sing-up.component.css']
 })
-export class SingupComponent extends FormValidation implements OnInit, OnDestroy {
+export class SingUpComponent extends FormValidation implements OnInit, OnDestroy {
   private regSub: Subscription;
   public signupSubmitAttempt = false;
   public regForm: FormGroup;
