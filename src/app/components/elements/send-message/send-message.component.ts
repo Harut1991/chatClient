@@ -95,7 +95,6 @@ export class SendMessageComponent implements OnInit, OnDestroy {
         this.toastrService.error('File too large.');
       } else {
         reader.readAsDataURL(file);
-        1;
         this.file = file;
         reader.onload = () => {
           this.form.patchValue({
