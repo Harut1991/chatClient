@@ -9,6 +9,7 @@ import {User} from '../../../models/user';
 import {HttpErrorResponse} from '@angular/common/http';
 import {userSetter} from '../../../utils/helpers';
 import {SocketService} from '../../../services/socket.service';
+import {ResponseForCreate} from '../../../models/responseForCreate';
 
 @Component({
   selector: 'app-singup',
@@ -53,21 +54,26 @@ export class SingUpComponent extends FormValidation implements OnInit, OnDestroy
   onRegistrationSubmit(): void {
 
     this.signupSubmitAttempt = true;
-    if (this.regForm.valid) {
-      const formData = this.regForm.value;
-      formData.ip = this.ip;
-      this.regSub = this.userService.create(formData).subscribe(
-        (res: User) => {
-          this.userService.userSubject.next(res);
-          userSetter(res);
-          res.active = true;
-          this.socketService.setOnlineFlag(res.id);
-          this.socketService.setNewUser(res);
-        },
-        (err: HttpErrorResponse) => {
-          this.toastrService.error(err.error.message);
-        });
+    if (!this.regForm.valid) {
+      return;
     }
+    const formData = this.regForm.value;
+    formData.ip = this.ip;
+    this.regSub = this.userService.create(formData).subscribe(
+      // @ts-ignore
+      (res: ResponseForCreate) => {
+        console.log(res)
+        this.userService.userSubject.next(res);
+        userSetter(res.user);
+        this.socketService.setOnlineFlag(res.user.id);
+        if (!res.exist) {
+          res.user.active = true;
+          this.socketService.setNewUser(res.user);
+        }
+      },
+      (err: HttpErrorResponse) => {
+        this.toastrService.error(err.error.message);
+      });
   }
 
 }
